@@ -4,15 +4,15 @@ document.getElementById('productForm').addEventListener('submit', function(event
     event.preventDefault();
 
     const nomeProduto = document.getElementById('nomeProduto').value;
-    const descriçãoProduto = document.getElementById('descriçãoProduto').value;
-    const preçoProduto = document.getElementById('preçoProduto').value;
+    const descricaoProduto = document.getElementById('descricaoProduto').value;
+    const precoProduto = parseFloat(document.getElementById('precoProduto').value);
     const produtoDisponivel = document.getElementById('produtoDisponivel').value;
 
     const novoProduto = {
         nome: nomeProduto,
-        descrição: descriçãoProduto,
-        preço: preçoProduto,
-        disponibilidade: produtoDisponivel === 'SIM'
+        descricao: descricaoProduto,
+        preco: precoProduto,
+        disponibilidade: produtoDisponivel === 'sim'
     };
 
     listaProdutos.push(novoProduto);
@@ -22,26 +22,24 @@ document.getElementById('productForm').addEventListener('submit', function(event
     atualizarListaProdutos();
 });
 
-function atualizarListaProdutos(){
-    const sortedProdutos = [...listaProdutos].sort((a,b) => a.price - b.price);
-    
+function atualizarListaProdutos() {
+    const sortedProdutos = [...listaProdutos].sort((a, b) => a.preco - b.preco);
+
     const tabelaListaProdutos = document.querySelector('#listaProdutos tbody');
     tabelaListaProdutos.innerHTML = '';
 
-    // Adiciona os produtos ordenados à tabela
-    produtosOrdenados.forEach(produto => {
+    sortedProdutos.forEach(produto => {
         const linha = document.createElement('tr');
         const celulaNome = document.createElement('td');
         celulaNome.textContent = produto.nome;
         const celulaPreco = document.createElement('td');
-        celulaPreco.textContent = `R$ ${produto.preço.toFixed(2)}`;
+        celulaPreco.textContent = `R$ ${produto.preco.toFixed(2)}`;
         linha.appendChild(celulaNome);
         linha.appendChild(celulaPreco);
         tabelaListaProdutos.appendChild(linha);
     });
 }
 
-// Função para exibir o formulário de cadastro
-document.getElementById('btnNovoProduto').addEventListener('click', function() {
-    document.getElementById('formularioProduto').style.display = 'block';
+document.getElementById('novoProduto').addEventListener('click', function() {
+    document.getElementById('productForm').scrollIntoView({ behavior: 'smooth' });
 });
