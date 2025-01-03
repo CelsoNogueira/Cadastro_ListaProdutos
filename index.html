@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <h1>Cadastro e listagem de produtos</h1>
+
+    <form id="productForm">
+        <label for="nomeProduto">Nome do Produto:</label>
+        <input type="text" id="nomeProduto" name="nomeProduto" required>
+
+        <label for="descricaoProduto">Descrição do Produto:</label>
+        <textarea id="descricaoProduto" name="descricaoProduto"></textarea>
+
+        <label for="preçoProduto">Valor do Produto:</label>
+        <input type="number" id="preçoProduto" name="preçoProduto" required>
+
+        <label for="produtoDisponivel">Disponível a venda:</label>
+        <select name="produtoDisponivel" id="produtoDisponivel"> <required>
+            <option value="sim">SIM</option>
+            <option value="não">NÃO</option>
+        </select>
+
+        <button type="submit">Cadastrar Produto</button>
+    </form>
+
+    <hr>
+
+    <h2>Lista de Produtos</h2>
+
+    <button id="novoProduto">Cadastrar Novo Produto</button>
+
+    <table id="listaProdutos">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+    </table>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
